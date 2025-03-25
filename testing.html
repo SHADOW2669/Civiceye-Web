@@ -260,10 +260,16 @@
             }
         }
 
-
+        
 
 
         /* Footer Styles */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
         footer {
             background-color: #111;
             color: #eee;
@@ -412,156 +418,157 @@
             .footer-description {
                 text-align: left;
             }
-        }
 
-        /* Responsive Media Queries */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                height: auto;
-                padding: 10px 20px;
+            /* Responsive Media Queries */
+            @media (max-width: 768px) {
+                .navbar {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    height: auto;
+                    padding: 10px 20px;
+                }
+
+                .navbar img,
+                .auth-buttons {
+                    margin-bottom: 10px;
+                }
+
+                .auth-buttons {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .auth-buttons a {
+                    margin: 5px 0;
+                }
+
+                .hero h1 {
+                    font-size: 48px;
+                }
+
+                .hero p {
+                    font-size: 18px;
+                }
+
+                .services {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .main-container {
+                    width: 90%;
+                    max-width: 100%;
+                    margin-bottom: 20px;
+                    position: relative;
+                    top: 0;
+                    height: auto;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .main-container {
+                    flex-direction: column;
+                }
+
+                .image-container {
+                    width: 100%;
+                }
             }
 
-            .navbar img,
-            .auth-buttons {
-                margin-bottom: 10px;
-            }
+            @media (max-width: 600px) {
+                .hero h1 {
+                    font-size: 36px;
+                }
 
-            .auth-buttons {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+                .hero p {
+                    font-size: 16px;
+                }
 
-            .auth-buttons a {
-                margin: 5px 0;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .services {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .main-container {
-                width: 90%;
-                max-width: 100%;
-                margin-bottom: 20px;
-                position: relative;
-                top: 0;
-                height: auto;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .main-container {
-                flex-direction: column;
+                .navbar img {
+                    height: 40px;
+                }
             }
 
             .image-container {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .navbar img {
-                height: 40px;
-            }
-        }
-
-        .image-container {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
-            width: 100%;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-left: 20px;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-right: 20px;
-            margin-bottom: 20px;
-            object-fit: contain;
-            max-height: 200px;
-        }
-
-        @media (min-width: 768px) {
-            .image-container {
-                flex-direction: column;
+                display: flex;
                 justify-content: flex-start;
+                margin-top: 20px;
+                width: 100%;
+                flex-direction: column;
                 align-items: flex-start;
+                margin-left: 20px;
             }
 
             .image-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                margin-right: 20px;
                 margin-bottom: 20px;
-                margin-right: 0;
+                object-fit: contain;
+                max-height: 200px;
+            }
+
+            @media (min-width: 768px) {
+                .image-container {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                .image-container img {
+                    margin-bottom: 20px;
+                    margin-right: 0;
+                }
+
+                .main-container {
+                    flex-direction: row;
+                }
+
+                .main-container ul {
+                    width: 50%;
+                }
+
+                .image-container {
+                    width: 50%;
+                    margin-left: 0;
+                }
             }
 
             .main-container {
-                flex-direction: row;
-            }
-
-            .main-container ul {
-                width: 50%;
-            }
-
-            .image-container {
-                width: 50%;
-                margin-left: 0;
-            }
-        }
-
-        .main-container {
-            position: sticky;
-            top: 100px;
-            z-index: 10;
-            background-color: black;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            height: fit-content;
-        }
-
-        @media (min-width: auto) {
-            .main-container {
+                position: sticky;
+                top: 100px;
+                z-index: 10;
+                background-color: black;
+                display: flex;
                 flex-direction: row;
                 align-items: flex-start;
+                height: fit-content;
             }
 
-            .main-container ul {
-                width: 50%;
+            @media (min-width: auto) {
+                .main-container {
+                    flex-direction: row;
+                    align-items: flex-start;
+                }
+
+                .main-container ul {
+                    width: 50%;
+                }
+
+                .image-container {
+                    width: 50%;
+                    margin-left: 0;
+                }
             }
 
-            .image-container {
-                width: 50%;
-                margin-left: 0;
+            .sticky-element {
+                position: sticky;
+                top: 1000px;
+                /* Adjust this value based on "MORE INFO" position */
             }
-        }
 
-        .sticky-element {
-            position: sticky;
-            top: 1000px;
-            /* Adjust this value based on "MORE INFO" position */
         }
     </style>
 </head>
@@ -596,6 +603,7 @@
         </p>
     </div>
 
+
     <div class="prepare">
         <h2>MORE INFO</h2>
     </div>
@@ -605,259 +613,227 @@
             <div class="content">
                 <h2>OBJECTIVES</h2>
                 <div class="objective">
-                    <strong>AI-Powered Traffic Violation Detection:</strong> Leverage the YOLOv8 object detection model
-                    to identify traffic violations such as "No Helmet," "Triple Riding," and other infractions with high
-                    accuracy.
+                    <strong>AI-Powered Traffic Violation Detection:</strong> Utilize YOLOv8 to detect violations such as
+                    "No Helmet," "Triple Riding," and other infractions in real time.
                 </div>
                 <div class="objective">
-                    <strong>Automated Evidence Collection & Reporting:</strong> Capture violation details including
-                    images, timestamps, and violation types. Automatically store data locally and send reports to a
-                    centralized database for further analysis.
+                    <strong>Automated Data Reporting:</strong> Capture and transmit violation details (images,
+                    timestamps, and types) from the client’s system to a centralized database.
                 </div>
                 <div class="objective">
-                    <strong>Centralized Monitoring & Management:</strong> Provide a secure web-based dashboard for users
-                    to track, review, and manage recorded violations efficiently.
+                    <strong>Centralized Monitoring & Management:</strong> Enable users to track, review, and manage
+                    detected violations through a web-based dashboard.
                 </div>
                 <div class="objective">
-                    <strong>Privacy-Focused & Efficient Processing:</strong> Perform detection directly on the client’s
-                    machine, ensuring data privacy, reducing dependency on cloud servers, and lowering operational
-                    costs.
+                    <strong>Privacy-Focused & Efficient Processing:</strong> Perform detection locally on the client’s
+                    machine, ensuring data privacy while minimizing server costs.
                 </div>
                 <div class="objective">
-                    <strong>Scalable & User-Friendly Deployment:</strong> Develop an easy-to-install, lightweight, and
-                    adaptable solution that can run across multiple devices with minimal configuration.
+                    <strong>Scalable & User-Friendly Deployment:</strong> Develop a robust, easy-to-install software
+                    that runs across multiple devices with minimal setup.
                 </div>
-                <div class="objective">
-                    <strong>Real-Time Detection & Alerts:</strong> Provide immediate violation detection and alerts,
-                    enabling quick response and action.
-                </div>
+
             </div>
+
             <div class="image-container">
-                <img src="" alt="Objective 1">
-                <img src="" alt="Objective 2">
+                <img src="yolologo.png" alt="YOLO 8">
+                <img src="detec1.png" alt="Violation 2">
             </div>
         </div>
-
-
 
         <div class="container">
             <div class="content">
                 <h2>KEY FEATURES</h2>
                 <div class="feature">
-                    <strong>Real-Time Violation Detection:</strong> Automatically detect and classify traffic violations
-                    using YOLOv8, ensuring instant identification of rule-breakers.
+                    <strong>Real-Time Violation Detection:</strong> Automatically detect and record traffic violations
+                    using the YOLOv8 object detection model.
                 </div>
                 <div class="feature">
-                    <strong>Local Processing:</strong> Perform AI-based detection directly on the client’s machine,
-                    reducing reliance on cloud services and ensuring privacy.
+                    <strong>Local Processing:</strong> Run the detection software locally on the client’s machine,
+                    minimizing data transmission.
                 </div>
                 <div class="feature">
-                    <strong>Automated Evidence Collection:</strong> Capture high-resolution images and metadata
-                    (timestamps, vehicle type, violation type) for each detected violation.
+                    <strong>Automated Reporting:</strong> Send violation evidence (photos and metadata) to a centralized
+                    database for storage and review.
                 </div>
                 <div class="feature">
-                    <strong>Data Reporting & Storage:</strong> Store violation logs locally and, if enabled, transmit
-                    them securely to a centralized database for further analysis.
+                    <strong>Web Dashboard:</strong> Provide a user-friendly website for viewing, searching, and
+                    filtering violations.
                 </div>
                 <div class="feature">
-                    <strong>Web Dashboard Access:</strong> Allow users to review violations, search logs, filter data,
-                    and generate reports through a modern, responsive web interface.
-                </div>
-                <div class="feature">
-                    <strong>Customizable Configuration:</strong> Easily set up camera feeds (RTSP URLs) and adjust
-                    detection sensitivity to match different environments.
-                </div>
-                <div class="feature">
-                    <strong>Multi-Violation Support:</strong> Detect and categorize multiple types of violations
-                    simultaneously, enhancing law enforcement capabilities.
-                </div>
-                <div class="feature">
-                    <strong>Scalable Deployment:</strong> Designed to support small-scale local setups as well as
-                    city-wide surveillance systems with minimal hardware requirements.
+                    <strong>Customizable Configuration:</strong> Users can easily configure the CCTV feed (RTSP URL) and
+                    software settings.
                 </div>
             </div>
+
             <div class="image-container">
-                <img src="" alt="Feature 1">
-                <img src="" alt="Feature 2">
+                <img src="https://placehold.co/400x200/EEE/31343C?text=Feature+1&font=Roboto" alt="Feature 1">
+                <img src="https://placehold.co/400x200/EEE/31343C?text=Feature+2&font=Roboto" alt="Feature 2">
             </div>
         </div>
-
-
 
         <div class="container">
             <div class="content">
                 <h2>SYSTEM REQUIREMENTS</h2>
                 <div class="feature">
-                    <strong>Operating System:</strong> Windows 10 or later (Linux support coming soon).
+                    <strong>Processor:</strong> Intel i3 or higher
                 </div>
                 <div class="feature">
-                    <strong>Processor:</strong> Intel i3 or higher (Intel i5/i7 recommended for better performance).
+                    <strong>RAM:</strong> 4GB (8GB recommended)
                 </div>
                 <div class="feature">
-                    <strong>RAM:</strong> Minimum 4GB (8GB or more recommended for smooth operation).
+                    <strong>GPU:</strong> Optional (YOLOv8-tiny can run on CPU)
                 </div>
                 <div class="feature">
-                    <strong>GPU (Optional):</strong> While the software runs efficiently on CPUs, a dedicated NVIDIA GPU
-                    accelerates AI processing and improves detection speed.
-                </div>
-                <div class="feature">
-                    <strong>Storage:</strong> At least 20GB of free disk space for software, logs, and data storage.
-                </div>
-                <div class="feature">
-                    <strong>Network Connectivity:</strong> Required for cloud-based reporting and dashboard access but
-                    optional for local-only processing.
-                </div>
-                <div class="feature">
-                    <strong>Software Dependencies:</strong> Requires Python 3.8+, OpenCV, Ultralytics YOLOv8, and
-                    AI-related libraries. The installer automatically handles setup.
-                </div>
-                <div class="feature">
-                    <strong>Camera Support:</strong> Supports both USB cameras and IP-based CCTV feeds via RTSP.
+                    <strong>Storage:</strong> 20GB free disk space
                 </div>
             </div>
+
             <div class="image-container">
-                <img src="" alt="System Requirement 1">
-                <img src="" alt="System Requirement 2">
+                <img src="https://placehold.co/400x200/EEE/31343C?text=System+Req+1&font=Roboto"
+                    alt="System Requirement 1">
+                <img src="https://placehold.co/400x200/EEE/31343C?text=System+Req+2&font=Roboto"
+                    alt="System Requirement 2">
             </div>
         </div>
 
+    
 
-    </div>
+        <footer>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="logo1.png" alt="Civic Eye Logo">
+                </div>
+                <div class="footer-description">
+                    Civic Eye is an advanced AI-powered software designed to <br>
+                    detect and monitor traffic violations using civilian CCTV cameras.
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h3>Quick Links</h3>
+                    <a href="#">Home</a>
+                    <a href="#">Download</a>
+                    <a href="#">Team</a>
+                    <a href="#">Contact Us</a>
 
-    <footer>
-        <div class="footer-top">
-            <div class="footer-logo">
-                <img src="logo1.png" alt="Civic Eye Logo">
+                </div>
+                <div class="footer-links-column">
+                    <h3>Contact Info</h3>
+                    <p>Mangaluru, Karnataka 575001.</p>
+                    <p>+91 XXXXX-XXXXX</p>
+                </div>
             </div>
-            <div class="footer-description">
-                Civic Eye is an advanced AI-powered software designed to <br>
-                detect and monitor traffic violations using civilian CCTV cameras.
+            <div class="footer-bottom">
+                <div>&copy; 2025 Civic Eye. All rights reserved.</div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
             </div>
-            <div class="footer-social">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="footer-links">
-            <div class="footer-links-column">
-                <h3>Quick Links</h3>
-                <a href="#">Home</a>
-                <a href="#">Download</a>
-                <a href="#">Team</a>
-                <a href="#">Contact Us</a>
-            </div>
-            <div class="footer-links-column">
-                <h3>Contact Info</h3>
-                <p>Mangaluru, Karnataka 575001.</p>
-                <p>+91 XXXXX-XXXXX</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>&copy; 2025 Civic Eye. All rights reserved.</div>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: "#7BD3EA"
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 4,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#7BD3EA",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 3,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "repulse"
+
+        <script>
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
                     },
-                    onclick: {
+                    color: {
+                        value: "#7BD3EA"
+                    },
+                    shape: {
+                        type: "circle"
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 4,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
                         enable: true,
-                        mode: "push"
+                        distance: 150,
+                        color: "#7BD3EA",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 3,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
                     }
                 },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "repulse"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        }
                     },
-                    push: {
-                        particles_nb: 4
+                    modes: {
+                        repulse: {
+                            distance: 100,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
                     }
+                },
+                retina_detect: true
+            });
+            window.addEventListener("scroll", function () {
+                let moreInfo = document.querySelector(".prepare"); // "MORE INFO" section
+                let stickyElement = document.querySelector(".sticky-element");
+
+                let moreInfoPosition = moreInfo.offsetTop; // Get "MORE INFO" position
+                let scrollPosition = window.scrollY;
+
+                if (scrollPosition >= moreInfoPosition) {
+                    stickyElement.style.position = "fixed";
+                    stickyElement.style.top = "0px"; // Adjust this as needed
+                } else {
+                    stickyElement.style.position = "relative";
                 }
-            },
-            retina_detect: true
-        });
+            });
 
-        window.addEventListener("scroll", function () {
-            let container = document.querySelector(".container");
-            let navbarHeight = document.querySelector(".navbar").offsetHeight;
-            let containerTop = container.offsetTop;
-            let scrollPosition = window.scrollY;
-
-            if (scrollPosition >= containerTop - navbarHeight && scrollPosition <= containerTop + container.offsetHeight) {
-                container.style.position = "fixed";
-                container.style.top = navbarHeight + 'px';
-                container.style.width = '80%';
-            } else {
-                container.style.position = "relative";
-                container.style.top = '0';
-                container.style.width = '80%';
-            }
-        });
-    </script>
+            
+        </script>
 </body>
 
 </html>
