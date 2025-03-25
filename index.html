@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Civic Eye</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="ppg.png" type="image/x-icon">
+    <style>
+        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&family=IBM+Plex+Sans:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Transparent & Neon Navbar */
+        .navbar {
+            width: 100%;
+            display: flex;
+            height: 80px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .navbar img {
+            padding: 5px;
+            height: 50px;
+            transition: transform 0.3s ease;
+            margin-right: 20px;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto Mono', monospace;
+            padding: 10px 15px;
+            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+        }
+
+        .auth-buttons a:hover {
+            color: #8300fe;
+            text-shadow: 0 0 10px #8300fe, 0 0 20px #8300fe;
+        }
+
+        .auth-buttons .login-btn {
+            color: white;
+            background: transparent;
+            border: 2px solid #8300fe;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            transition: background 0.3s, box-shadow 0.3s ease-in-out;
+        }
+
+        .auth-buttons .login-btn:hover {
+            background: #8300fe;
+            box-shadow: 0 0 10px #8300fe, 0 0 20px #8300fe;
+        }
+
+        /* Transparent Menu Toggle for Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navbar Scroll Effect */
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            transition: background 0.3s ease-in-out;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            .navbar img, .auth-buttons {
+                margin-bottom: 10px;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons a {
+                margin: 5px 0;
+            }
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: #0a0a0a;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+        }
+
+
+        .hero h1 {
+            font-size: 72px;
+            margin: 20px 0 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin: 20px 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .hero .info {
+            margin-top: 40px;
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            font-family: 'Roboto Mono', monospace;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* Prepare Section */
+        .prepare {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .prepare h2 {
+            font-size: 32px;
+            color: #9c27b0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+        }
+
+        .service-box {
+            width: 100%;
+            max-width: 45%;
+            padding: 30px;
+            border: 2px solid white;
+            border-radius: 10px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.05);
+            box-sizing: border-box;
+        }
+
+        .service-box h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            color: #ff5722;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .service-box ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .service-box ul li {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            line-height: 1.6;
+            border-left: 4px solid #ff5722;
+            padding-left: 15px;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 5px;
+        }
+
+        .service-box ul li strong {
+            color: #ff5722;
+        }
+
+        /* Software Requirements Section */
+        .software-requirements {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 60%;
+            border: 2px solid #ff5722;
+            border-radius: 10px;
+            text-align: left;
+            font-family: 'IBM Plex Sans', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .software-requirements h2 {
+            font-size: 28px;
+            color: #ff5722;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .software-requirements ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .software-requirements ul li {
+            font-size: 18px;
+            padding: 10px;
+            border-left: 4px solid #ff5722;
+            background-color: rgba(255, 255, 255, 0.07);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding-left: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer Styles */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footerBottom p {
+            color: white;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 10px 20px;
+            }
+
+            .navbar img, .auth-buttons {
+                margin-bottom: 10px;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-buttons a {
+                margin: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-box {
+                width: 90%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .software-requirements {
+                width: 90%;
+                max-width: 90%;
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .navbar img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">
+            <img src="logo1.png" alt="Civic Eye Logo">
+        </a>
+        <div class="auth-buttons">
+            <a href="index.html">Home</a>
+            <a href="download">Download</a>
+            <a href="team">Team</a>
+            <a href="contact-us">Contact Us</a>
+            <a href="login.html">
+                <button class="login-btn">LOGIN / SIGNUP</button>
+            </a>
+        </div>
+    </div>
+    <div id="particles-js"></div>
+    
+    <div class="hero">
+        <h1>Civic Eye</h1>
+        <p>Introduction</p>
+        <p class="info">
+            CivicEye is an innovative software designed to detect and monitor traffic violations using
+            home-based CCTV cameras. It empowers users to identify common traffic rule violations, such as riding
+            without a helmet. The software integrates seamlessly with user-provided CCTV systems, processes violations
+            locally, and sends critical data and evidence to a centralized database. Users can access detailed violation
+            logs and reports via a DASHBOARD.
+        </p>
+    </div>
+
+
+    <div class="prepare">
+        <h2>MORE INFO</h2>
+    </div>
+
+    <div class="services">
+        <div class="service-box">
+            <h3>Objectives</h3>
+            <ul>
+                <li><strong>Traffic Violation Detection:</strong> Leverage AI-powered object detection (YOLOvv3) to
+                    identify violations like "no helmet," "triple riding," and more.</li>
+                <li><strong>Automated Data Reporting:</strong> Send violation data (images, timestamps, types) from the
+                    client’s system to a centralized database.</li>
+                <li><strong>Centralized Monitoring:</strong> Allow users to view and manage detected violations via a
+                    web dashboard.</li>
+                <li><strong>Privacy and Efficiency:</strong> Enable local processing on the client’s machine, ensuring
+                    data privacy and reducing server costs.</li>
+                <li><strong>Scalability:</strong> Create a robust, user-friendly software that can be downloaded and run
+                    across different devices.</li>
+            </ul>
+        </div>
+        <div class="service-box">
+            <h3>KEY FEATURES</h3>
+            <ul>
+                <li><strong>Real-Time Violation Detection:</strong> Automatically detect and record traffic violations
+                    using the YOLOv3 object detection model.</li>
+                <li><strong>Local Processing:</strong> Run the detection software locally on the client’s machine,
+                    minimizing data transmission.</li>
+                <li><strong>Automated Reporting:</strong> Send violation evidence (photos and metadata) to a centralized
+                    database for storage and review.</li>
+                <li><strong>Web Dashboard:</strong> Provide a user-friendly website for viewing, searching, and
+                    filtering violations.</li>
+                <li><strong>Customizable Configuration:</strong> Users can easily configure the CCTV feed (RTSP URL) and
+                    software settings.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="software-requirements">
+        <h2>SYSTEM REQUIREMENTS</h2>
+        <ul>
+            <li><strong>Processor:</strong> Intel i3 or higher</li>
+            <li><strong>RAM:</strong> 4GB (8GB recommended)</li>
+            <li><strong>GPU:</strong> Optional (YOLOv3-tiny can run on CPU)</li>
+            <li><strong>Storage:</strong> 20GB free disk space</li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025 CIVIC EYE</p>
+        </div>
+    </footer>
+
+
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#7BD3EA"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 4,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#7BD3EA",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        window.addEventListener('scroll', function() {
+            const downloadButton = document.querySelector('.download-button');
+            const scrollY = window.scrollY;
+
+            // You can adjust the scroll threshold as needed
+            if (scrollY > 500) { // Show after scrolling down 500px
+                downloadButton.classList.add('show');
+            } else {
+                downloadButton.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
