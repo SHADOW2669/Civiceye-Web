@@ -362,7 +362,8 @@ function isActiveForm($formName, $activeForm) {
     <div id="particles-js"></div>
 
     <div class="container">
-        <div class="form-container fade-in <?= isActiveForm('login', $activeForm); ?>" id="login-form">  <form action="login.php" method="post">
+        <div class="form-container fade-in <?= isActiveForm('login', $activeForm); ?>" id="login-form">  
+        <form action="login_register.php" method="post">
                 <h2>Login</h2>
                 <?= showError($errors['login']);?>
                 <input type="text" name="email" placeholder="email" required>
@@ -375,19 +376,26 @@ function isActiveForm($formName, $activeForm) {
         <div class="switch-container" id="switchContainer">
             <h2>Welcome!</h2>
             <p id="switchText">Don't have an account? </p>  <button class="toggle-btn" id="showRegister">Register</button>  </div>
-        <div class="form-container hidden  <?= isActiveForm('register', $activeForm); ?>" id="register-form">  <form action="login.php" method="post">
+        <div class="form-container hidden  <?= isActiveForm('register', $activeForm); ?>" id="register-form">  
+        <form action="login_register.php" method="post">
                 <h2>Register</h2>
                 <?= showError($errors['register']);?>
                 <input type="text" name="name" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="register-btn-custom">Register</button>
+                <button type="submit" class="register-btn-custom" type="submit">Register</button>
                 <input type="hidden" name="form_type" value="register">
             </form>
         </div>
     </div>
     
     <script>
+        
+
+        function showForm(formId){
+    document.querySelectorAll(".form").forEach(form => form.classList.remove("active"));
+    document.getElementById(formId).classList.add("active");
+}
   document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
     const registerForm = document.getElementById("register-form");
@@ -520,7 +528,7 @@ function isActiveForm($formName, $activeForm) {
     // Mouse repel effect
     document.addEventListener('mousemove', (event) => {
         let x = (event.clientX / window.innerWidth) * 2 - 1;
-        let y = (event.clientY / window.innerHeight) * 2 - 1;
+        let y = (event.clientY / window.innerHeight) * 2 - 1 - y;
         let particles = window.pJSDom[0].pJS.particles.array;
 
         particles.forEach(particle => {
